@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
 - Nome: ${userData.nome}
 - Idade: ${userData.idade} anos
 - Peso: ${userData.peso} kg
-- Altura: ${userData.altura} cm
+- Altura: ${userData.height || userData.altura} cm
 - Gênero: ${userData.genero}
 - Objetivo: ${objetivo}
 - Nível de atividade: ${nivelAtividade}

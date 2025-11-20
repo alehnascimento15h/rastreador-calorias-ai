@@ -44,7 +44,7 @@ export default function Home() {
       setLoading(false);
     } catch (error) {
       console.error('Erro ao verificar usuário:', error);
-      setLoading(false);
+      router.push('/login');
     }
   };
 
