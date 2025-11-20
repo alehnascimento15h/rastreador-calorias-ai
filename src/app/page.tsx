@@ -737,10 +737,51 @@ export default function Home() {
                       alt="Refeição"
                       className="w-full h-80 object-cover rounded-2xl border-2 border-gray-700 shadow-2xl"
                     />
+                    
+                    {/* Overlay com informações dos alimentos */}
+                    {mealAnalysis.length > 0 && (
+                      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm rounded-2xl p-4 overflow-y-auto">
+                        <div className="space-y-3">
+                          {mealAnalysis.map((item, index) => (
+                            <div
+                              key={index}
+                              className="bg-gradient-to-r from-green-500/90 to-blue-500/90 backdrop-blur-md rounded-xl p-4 border-2 border-white/30 shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-500"
+                              style={{ animationDelay: `${index * 100}ms` }}
+                            >
+                              <div className="flex items-center gap-3 mb-2">
+                                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center font-bold text-black text-sm">
+                                  {index + 1}
+                                </div>
+                                <h4 className="font-bold text-white text-lg flex-1">{item.alimento}</h4>
+                              </div>
+                              <div className="grid grid-cols-2 gap-2 text-sm">
+                                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2 border border-white/30">
+                                  <p className="text-white/80 text-xs font-medium">Calorias</p>
+                                  <p className="text-white font-bold text-xl">{item.calorias} <span className="text-sm">kcal</span></p>
+                                </div>
+                                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2 border border-white/30">
+                                  <p className="text-white/80 text-xs font-medium">Proteínas</p>
+                                  <p className="text-white font-bold text-xl">{item.proteinas} <span className="text-sm">g</span></p>
+                                </div>
+                                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2 border border-white/30">
+                                  <p className="text-white/80 text-xs font-medium">Carboidratos</p>
+                                  <p className="text-white font-bold text-xl">{item.carboidratos} <span className="text-sm">g</span></p>
+                                </div>
+                                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2 border border-white/30">
+                                  <p className="text-white/80 text-xs font-medium">Gorduras</p>
+                                  <p className="text-white font-bold text-xl">{item.gorduras} <span className="text-sm">g</span></p>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    
                     <Button
                       size="icon"
                       variant="destructive"
-                      className="absolute top-4 right-4 rounded-full shadow-lg"
+                      className="absolute top-4 right-4 rounded-full shadow-lg z-10"
                       onClick={() => {
                         setMealImage(null);
                         setMealAnalysis([]);
